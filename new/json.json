@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "img":"assets/img/products/product-img-1.jpg",
+        "name":"Strawberry",
+        "price":85,
+        "stock": 10,
+        "inStock" : true,
+        "category": "fruit",
+        "date":"",
+        "status":""
+    },
+    {
+        "id": 2,
+        "img":"assets/img/products/product-img-2.jpg",
+        "name":"Berry",
+        "price":75,
+        "stock": 3,
+        "inStock" : true
+    },
+    {
+        "id": 3,
+        "img":"assets/img/products/product-img-3.jpg",
+        "name":"Lemon",
+        "price":30,
+        "stock": 5,
+        "inStock" : true
+    }
+]
