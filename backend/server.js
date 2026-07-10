@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const multer = require('multer');
 const xlsx = require('xlsx');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 require('colors');
 
 const app = myexpress();
@@ -12,7 +13,7 @@ app.use(myexpress.json());
 app.use(cors());
 app.use(myexpress.static(path.join(__dirname, 'public')));
 
-const port = process.env.port || 3000;
+const port = 4000 ||process.env.PORT;
 const upload = multer({ dest: "uploads/" });
 
 const storage = multer.diskStorage({
@@ -206,6 +207,6 @@ app.delete("/delete/:id/:col/:table", (req, res) => {
 });
 
 app.listen(port, (err) => {
-    if (err) return console.log("server connection error!".red);
+    if (err) return console.log("server connection error!".red, err.message);
     console.log('Server is listening on port '.blue + port);
 })
