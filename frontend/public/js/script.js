@@ -1,5 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    // Rewrite fetch calls targeting old backend port to the running backend port.
+    (function() {
+        const OLD = 'http://localhost:3000';
+        const NEW = 'http://localhost:3002';
+        const originalFetch = window.fetch.bind(window);
+        window.fetch = function(input, init) {
+            try {
+                if (typeof input === 'string') {
+                    if (input.startsWith(OLD)) input = input.replace(OLD, NEW);
+                } else if (input && input.url && typeof input.url === 'string') {
+                    if (input.url.startsWith(OLD)) {
+                        input = new Request(input.url.replace(OLD, NEW), input);
+                    }
+                }
+            } catch (e) {
+                // fallback to original input on error
+            }
+            return originalFetch(input, init);
+        };
+    })();
+
     const message1 = document.getElementById('messageDisplay1');
     const message2 = document.getElementById('messageDisplay2');
     const view = document.getElementById('viewResults');
