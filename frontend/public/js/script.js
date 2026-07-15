@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Rewrite fetch calls targeting old backend port to the running backend port.
     (function() {
         const OLD = 'http://localhost:3000';
-        const NEW = 'http://localhost:3002';
+        const NEW = 'https://propertymgt.onrender.com';
         const originalFetch = window.fetch.bind(window);
         window.fetch = function(input, init) {
             try {
